@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Dashboard</h1>
+<div class="grid">
+  <div class="card"><div class="stat">{{ counts.customers }}</div><div class="muted">Customers</div></div>
+  <div class="card"><div class="stat">{{ counts.scheduled }}</div><div class="muted">Scheduled</div></div>
+  <div class="card"><div class="stat">{{ counts.sent }}</div><div class="muted">Sent / accepted</div></div>
+  <div class="card"><div class="stat">{{ counts.replies }}</div><div class="muted">Replies</div></div>
+  <div class="card"><div class="stat">{{ counts.failed }}</div><div class="muted">Failed</div></div>
+</div>
+
+<div class="card">
+  <h2>Recent customers</h2>
+  <table>
+    <tr><th>Name</th><th>Phone</th><th>Rep</th><th>Install</th><th>Order</th></tr>
+    {% for c in customers %}
+    <tr>
+      <td>{{ c.customer_name }}</td><td>{{ c.phone_e164 }}</td><td>{{ c.rep_name or "" }}</td>
+      <td>{{ c.install_date or "" }}</td><td>{{ c.order_id or "" }}</td>
+    </tr>
+    {% else %}<tr><td colspan="5">No customers yet.</td></tr>{% endfor %}
+  </table>
+</div>
+
+<div class="card">
+  <h2>Recent replies</h2>
+  <table>
+    <tr><th>From</th><th>Message</th><th>Received</th></tr>
+    {% for r in replies %}
+    <tr><td>{{ r.from_number }}</td><td>{{ r.body }}</td><td>{{ r.received_at }}</td></tr>
+    {% else %}<tr><td colspan="3">No replies yet.</td></tr>{% endfor %}
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Upload MBX CSV</h1>
+<div class="card">
+  <p>Required: a customer-name column and phone-number column. Install date, rep, and order/account ID are strongly recommended.</p>
+  <form method="post" action="/upload" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".csv,text/csv" required>
+    <p><button type="submit">Import customers</button></p>
+  </form>
+</div>
+
+{% if result %}
+<div class="card">
+  {% if result.error %}
+    <div class="bad"><strong>Import stopped:</strong> {{ result.error }}</div>
+  {% else %}
+    <div class="good"><strong>Import complete.</strong></div>
+    <div class="grid" style="margin-top:14px">
+      <div><div class="stat">{{ result.rows }}</div><div class="muted">Rows read</div></div>
+      <div><div class="stat">{{ result.added }}</div><div class="muted">New customers</div></div>
+      <div><div class="stat">{{ result.duplicates }}</div><div class="muted">Duplicates skipped</div></div>
+      <div><div class="stat">{{ result.invalid }}</div><div class="muted">Invalid skipped</div></div>
+      <div><div class="stat">{{ result.scheduled }}</div><div class="muted">Messages scheduled</div></div>
+    </div>
+  {% endif %}
+
+  <h3>Detected columns</h3>
+  <pre>{{ result.mapping }}</pre>
+  {% if result.notes %}
+    <h3>Notes</h3>
+    <ul>{% for n in result.notes %}<li>{{ n }}</li>{% endfor %}</ul>
+  {% endif %}
+</div>
+{% endif %}
+{% endblock %}

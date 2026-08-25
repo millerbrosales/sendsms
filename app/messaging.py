@@ -49,8 +49,9 @@ def send_sms(to_number: str, body: str):
     service_sid = os.environ["TWILIO_MESSAGING_SERVICE_SID"]
     client = Client(account_sid, auth_token)
     msg = client.messages.create(
-        to=to_number,
-        body=body,
-        messaging_service_sid=service_sid,
-    )
+    to=to_number,
+    from_="+15736854720",
+    body=body,
+    messaging_service_sid=service_sid,
+)
     return msg

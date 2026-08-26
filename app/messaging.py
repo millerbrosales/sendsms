@@ -29,20 +29,19 @@ def render_templates(customer_name, rep_name, install_date):
 
     # Keep these concise. Edit them to match your approved A2P campaign language.
     return {
-        "welcome": (
-            f"Hi {first}, this is {rep}. I have your internet order set up and your install "
-            f"is scheduled for {date_text}. I’ll keep you updated. Reply STOP to opt out."
-        ),
-        "reminder": (
-            f"Hi {first}, this is {rep}. Just a reminder that your internet install is scheduled "
-            f"for {date_text}. Need to reschedule? Reply here and I can help."
-        ),
-        "followup": (
-            f"Hi {first}, this is {rep}. How did your internet install go? If it didn’t get completed, "
-            f"reply here and I can help get it rescheduled."
-        ),
-    }
-
+    "welcome": (
+        f"Hi {first}, {rep} with Socket Fiber. You get a free month + free install on "
+        f"{date_text}! I'll keep you updated. Reply STOP to opt out."
+    ),
+    "reminder": (
+        f"Hi {first}! Your Socket Fiber install is 2 days away on {date_text}. "
+        f"We'll see you soon! Reply here if you have any questions."
+    ),
+    "followup": (
+        f"Hi {first}! Checking in after your Socket install. Did it go well? "
+        f"If we missed you, send a day next week + time that works best to reschedule."
+    ),
+}
 def send_sms(to_number: str, body: str):
     account_sid = os.environ["TWILIO_ACCOUNT_SID"]
     auth_token = os.environ["TWILIO_AUTH_TOKEN"]

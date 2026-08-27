@@ -30,7 +30,7 @@ def render_templates(customer_name, rep_name, install_date):
     # Keep these concise. Edit them to match your approved A2P campaign language.
     return {
         "welcome": (
-            f"Hi {first}, this is {rep} with Socket Fiber. Happy to get you signed up for a "
+            f"Hi {first}, this is {rep} with Socket Fiber. I signed you up yesterday for the "
             f"free install + free month! Feel free to reach out with questions. STOP to opt out."
         ),
         "reminder": (

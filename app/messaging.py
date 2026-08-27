@@ -28,20 +28,20 @@ def render_templates(customer_name, rep_name, install_date):
     date_text = install_date.strftime("%a, %b %-d") if install_date else "your scheduled date"
 
     # Keep these concise. Edit them to match your approved A2P campaign language.
-return {
-    "welcome": (
-        f"Hi {first}, this is {rep} with Socket Fiber. Happy to get you signed up for a "
-        f"free install + free month! Feel free to reach out with questions. STOP to opt out."
-    ),
-    "reminder": (
-        f"Hi {first}! Your Socket Fiber install is a couple days away on {date_text}. "
-        f"We'll see you soon! Reply here if you have any questions."
-    ),
-    "followup": (
-        f"Hi {first}! Checking in after your install. Did it go well? "
-        f"If we missed you, send a day next week + time that works best to reschedule."
-    ),
-}
+    return {
+        "welcome": (
+            f"Hi {first}, this is {rep} with Socket Fiber. Happy to get you signed up for a "
+            f"free install + free month! Feel free to reach out with questions. STOP to opt out."
+        ),
+        "reminder": (
+            f"Hi {first}! Your Socket Fiber install is a couple days away on {date_text}. "
+            f"We'll see you soon! Reply here if you have any questions."
+        ),
+        "followup": (
+            f"Hi {first}! Checking in after your install. Did it go well? "
+            f"If we missed you, send a day next week + time that works best to reschedule."
+        ),
+    }
 def send_sms(to_number: str, body: str):
     account_sid = os.environ["TWILIO_ACCOUNT_SID"]
     auth_token = os.environ["TWILIO_AUTH_TOKEN"]

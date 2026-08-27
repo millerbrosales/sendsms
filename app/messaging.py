@@ -28,17 +28,17 @@ def render_templates(customer_name, rep_name, install_date):
     date_text = install_date.strftime("%a, %b %-d") if install_date else "your scheduled date"
 
     # Keep these concise. Edit them to match your approved A2P campaign language.
-    return {
+return {
     "welcome": (
-        f"Hi {first}, {rep} with Socket Fiber. You get a free month + free install on "
-        f"{date_text}! I'll keep you updated. Reply STOP to opt out."
+        f"Hi {first}, this is {rep} with Socket Fiber. Happy to get you signed up for a "
+        f"free install + free month! Feel free to reach out with questions. STOP to opt out."
     ),
     "reminder": (
-        f"Hi {first}! Your Socket Fiber install is 2 days away on {date_text}. "
+        f"Hi {first}! Your Socket Fiber install is a couple days away on {date_text}. "
         f"We'll see you soon! Reply here if you have any questions."
     ),
     "followup": (
-        f"Hi {first}! Checking in after your Socket install. Did it go well? "
+        f"Hi {first}! Checking in after your install. Did it go well? "
         f"If we missed you, send a day next week + time that works best to reschedule."
     ),
 }
